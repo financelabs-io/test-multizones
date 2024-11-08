@@ -5,6 +5,23 @@
 import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  rewrites: async () => {
+    return [
+      {
+        source: "/advies",
+        destination: "https://advisor.boekhouder.nl/",
+      },
+      {
+        source: "/advies/:path+",
+        destination: "https://advisor.boekhouder.nl/:path+",
+      },
+      {
+        source: "/advies-static/_next/:path+",
+        destination: "https://advisor.boekhouder.nl/_next/:path+",
+      },
+    ];
+  },
+};
 
 export default config;
